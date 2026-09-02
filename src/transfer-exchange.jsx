@@ -349,7 +349,7 @@ export default function App() {
 for (const k of keys) {
   try {
     const r = await window.storage.get(k, true);
-    if (r && r.value) allRequests.push(JSON.parse(r.value));
+    if (r && r.value) others.push(JSON.parse(r.value));
   } catch (e) {}
 }
 
@@ -388,7 +388,7 @@ for (const k of keys) {
       const keys = (listRes && listRes.keys) || [];
       const others = [];
       for (const k of keys) {
-        if (k === key(email)) continue;
+      
         try {
           const r = await window.storage.get(k, true);
           if (r && r.value) others.push(JSON.parse(r.value));
