@@ -1,31 +1,33 @@
-// src/lib/storage.js
-import { createClient } from '@supabase/supabase-js';
+// Shared storage backed by one JSON file per organisation + city.
+// The browser talks only to the Vercel /api/storage endpoint.
+// No Supabase or database is required.
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+async function call(action, payload = {}) {
+  const response = await fetch(`/api/storage?action=${encodeURIComponent(action)}`, {
+    method: action === 'get' || action === 'list' ? 'GET' : 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: action === 'get' || action === 'list' ? undefined : JSON.stringify(payload),
+  });
 
-// One table: kv_store(key text primary key, value text, shared boolean)
+  let data = null;
+  try { data = await response.json(); } catch (_) {}
+  if (!response.ok) {
+    throw new Error(data?.error || `Storage request failed (${response.status})`);
+  }
+  return data;
+}
+
 window.storage = {
   async get(key) {
-    const { data, error } = await supabase.from('kv_store').select('value').eq('key', key).maybeSingle();
-    if (error) throw error;
-    return data ? { key, value: data.value, shared: true } : null;
+    return call('get', { key });
   },
   async set(key, value) {
-    const { error } = await supabase.from('kv_store').upsert({ key, value });
-    if (error) throw error;
-    return { key, value, shared: true };
+    return call('set', { key, value });
   },
   async delete(key) {
-    const { error } = await supabase.from('kv_store').delete().eq('key', key);
-    if (error) throw error;
-    return { key, deleted: true, shared: true };
+    return call('delete', { key });
   },
-  async list(prefix) {
-    const { data, error } = await supabase.from('kv_store').select('key').like('key', `${prefix}%`);
-    if (error) throw error;
-    return { keys: data.map(r => r.key), shared: true };
+  async list(prefix = '') {
+    return call('list', { prefix });
   },
 };
