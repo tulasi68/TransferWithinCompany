@@ -79,5 +79,32 @@
     "organizationFinal": "Life Insurance Corporation of India",
     "createdAt": "2026-09-02T20:43:24.276Z",
     "updatedAt": "2026-09-02T20:43:24.277Z"
+  },
+  {
+    "name": "Hj",
+    "email": "z@b.com",
+    "organization": "Life Insurance Corporation of India",
+    "organizationOther": "",
+    "officialPhone": "2547896321",
+    "altPhone": "",
+    "currentCity": "Delhi",
+    "desiredCity": "Indore",
+    "branchName": "Fg",
+    "branchCode": "",
+    "branchType": "Branch Office",
+    "role": "Gy",
+    "grade": "",
+    "department": "Foreign Exchange",
+    "seniorityYears": "5",
+    "withFamily": "no",
+    "dependents": "",
+    "transferDate": "2026-09-02",
+    "managerName": "Yu",
+    "reason": "Ghy",
+    "notes": "",
+    "consent": true,
+    "organizationFinal": "Life Insurance Corporation of India",
+    "createdAt": "2026-09-02T20:53:47.990Z",
+    "updatedAt": "2026-09-02T20:53:47.990Z"
   }
 ]
