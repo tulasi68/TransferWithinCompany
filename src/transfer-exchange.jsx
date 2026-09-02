@@ -345,13 +345,16 @@ export default function App() {
       const listRes = await window.storage.list("request:", true);
       const keys = (listRes && listRes.keys) || [];
       const others = [];
-      for (const k of keys) {
-        if (k === key(email)) continue;
-        try {
-          const r = await window.storage.get(k, true);
-          if (r && r.value) others.push(JSON.parse(r.value));
-        } catch (e) { /* skip unreadable record */ }
-      }
+    
+for (const k of keys) {
+  try {
+    const r = await window.storage.get(k, true);
+    if (r && r.value) allRequests.push(JSON.parse(r.value));
+  } catch (e) {}
+}
+
+
+      
       const org = myRequest.organizationFinal || myRequest.organization;
       const cityMatch = (r) =>
         norm(r.currentCity) === norm(myRequest.desiredCity) &&
