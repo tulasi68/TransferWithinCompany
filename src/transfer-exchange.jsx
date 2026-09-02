@@ -1127,11 +1127,11 @@ function GlobalStyle() {
       .tx-testmode input { margin-top: 2px; accent-color: var(--alert); }
 
       /* Shell */
-.tx-shell {
-  width: 100%; max-width: 430px;
-  background: var(--paper);
-  display: flex;
-  flex-direction: column;
+      .tx-shell {
+        width: 100%; max-width: 430px; min-height: 100vh;
+        background: var(--paper); display: flex; flex-direction: column;
+        border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+      }
       .tx-header {
         display: flex; align-items: center; justify-content: space-between;
         padding: 14px 16px; background: var(--navy-deep); color: #fff;
@@ -1143,25 +1143,14 @@ function GlobalStyle() {
       .tx-icon-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px; border-radius: 8px; cursor: pointer; display: flex; }
       .tx-icon-btn:hover { background: rgba(255,255,255,0.18); }
 
-.tx-main {
-  flex: 0 0 auto;
-  padding: 16px;
-  padding-bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}      .tx-stack { display: flex; flex-direction: column; gap: 14px; }
+      .tx-main { flex: 1; padding: 16px; padding-bottom: 90px; display: flex; flex-direction: column; gap: 14px; }
+      .tx-stack { display: flex; flex-direction: column; gap: 14px; }
 
-.tx-tabbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 430px;
-  display: flex;
-  background: var(--card);
-  border-top: 1px solid var(--line);
-  padding: 6px 10px 10px;
-}
+      .tx-tabbar {
+        position: fixed; bottom: 0; width: 100%; max-width: 430px;
+        display: flex; background: var(--card); border-top: 1px solid var(--line);
+        padding: 6px 10px 10px;
+      }
       .tx-tab {
         flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
         background: none; border: none; color: var(--slate); font-size: 11px; padding: 6px 0;
