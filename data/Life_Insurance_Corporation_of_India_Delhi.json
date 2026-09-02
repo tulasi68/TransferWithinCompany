@@ -25,5 +25,32 @@
     "organizationFinal": "Life Insurance Corporation of India",
     "createdAt": "2026-09-02T20:25:19.724Z",
     "updatedAt": "2026-09-02T20:25:19.724Z"
+  },
+  {
+    "name": "Rt",
+    "email": "f@c.com",
+    "organization": "Life Insurance Corporation of India",
+    "organizationOther": "",
+    "officialPhone": "8965471230",
+    "altPhone": "",
+    "currentCity": "Delhi",
+    "desiredCity": "Mumbai",
+    "branchName": "Rt",
+    "branchCode": "",
+    "branchType": "Metropolitan",
+    "role": "Ty",
+    "grade": "",
+    "department": "Branch Banking / Retail",
+    "seniorityYears": "5",
+    "withFamily": "no",
+    "dependents": "",
+    "transferDate": "2026-09-02",
+    "managerName": "Df",
+    "reason": "Dfr",
+    "notes": "",
+    "consent": true,
+    "organizationFinal": "Life Insurance Corporation of India",
+    "createdAt": "2026-09-02T20:35:10.845Z",
+    "updatedAt": "2026-09-02T20:35:10.846Z"
   }
 ]
