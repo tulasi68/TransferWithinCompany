@@ -3,10 +3,15 @@
 // No Supabase or database is required.
 
 async function call(action, payload = {}) {
-  const response = await fetch(`/api/storage?action=${encodeURIComponent(action)}`, {
-    method: action === 'get' || action === 'list' ? 'GET' : 'POST',
+  const params = new URLSearchParams({ action });
+  if (payload.key) params.set('key', payload.key);
+  if (payload.prefix) params.set('prefix', payload.prefix);
+
+  const isRead = action === 'get' || action === 'list';
+  const response = await fetch(`/api/storage?${params.toString()}`, {
+    method: isRead ? 'GET' : 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: action === 'get' || action === 'list' ? undefined : JSON.stringify(payload),
+    body: isRead ? undefined : JSON.stringify(payload),
   });
 
   let data = null;
