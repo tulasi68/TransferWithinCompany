@@ -30,14 +30,14 @@ body {
   box-sizing: border-box;
 }
 
-/* Don't force the application to occupy unnecessary height */
+/* Don't force unnecessary height */
 .tx-page,
 .tx-stack {
   height: auto;
   min-height: 0;
 }
 
-/* Cards should use the available mobile width */
+/* Cards should use available width */
 .tx-card,
 .tx-match {
   box-sizing: border-box;
@@ -45,7 +45,84 @@ body {
   max-width: 100%;
 }
 
-/* Mobile */
+/* =========================================================
+   LANDING / LOGIN PAGE
+   ========================================================= */
+
+.tx-auth,
+.tx-auth-card {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+/* Make landing-page text easier to read */
+.tx-auth {
+  font-size: 18px;
+}
+
+.tx-auth h1,
+.tx-auth h2 {
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.tx-auth p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Larger email field */
+.tx-auth input[type="email"],
+.tx-auth input[type="text"] {
+  width: 100%;
+  min-height: 52px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-size: 18px;
+}
+
+/* Larger landing-page buttons */
+.tx-auth button {
+  min-height: 50px;
+  padding: 12px 20px;
+  font-size: 18px;
+}
+
+/* =========================================================
+   BROWSE / SEARCH / EDIT
+   ========================================================= */
+
+/*
+   Reduce excessive vertical space between the top content
+   and the lower panel.
+*/
+.tx-tab-content,
+.tx-page-content {
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* Reduce unnecessary gaps in vertical stacks */
+.tx-stack {
+  min-height: 0 !important;
+  height: auto !important;
+  gap: 10px;
+}
+
+/* Cards remain readable without creating large gaps */
+.tx-card,
+.tx-match {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 600px) {
 
   .tx-app {
@@ -58,6 +135,7 @@ body {
     width: 100%;
     padding-left: 12px;
     padding-right: 12px;
+    box-sizing: border-box;
   }
 
   .tx-main {
@@ -66,13 +144,18 @@ body {
     padding-right: 0;
   }
 
-  .tx-card {
+  .tx-card,
+  .tx-match {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    box-sizing: border-box;
   }
 
-  /* Login / landing page */
+  /* -----------------------------
+     Landing page
+     ----------------------------- */
+
   .tx-auth,
   .tx-auth-card {
     width: 100%;
@@ -80,7 +163,31 @@ body {
     box-sizing: border-box;
   }
 
-  /* Prevent Match / Browse from creating artificial empty space */
+  .tx-auth h1,
+  .tx-auth h2 {
+    font-size: 28px;
+  }
+
+  .tx-auth p {
+    font-size: 18px;
+  }
+
+  .tx-auth input[type="email"],
+  .tx-auth input[type="text"] {
+    min-height: 54px;
+    font-size: 18px;
+    padding: 13px 14px;
+  }
+
+  .tx-auth button {
+    min-height: 52px;
+    font-size: 18px;
+  }
+
+  /* -----------------------------
+     Browse / Search / Edit
+     ----------------------------- */
+
   .tx-tab-content,
   .tx-page-content,
   .tx-stack {
@@ -88,10 +195,20 @@ body {
     height: auto !important;
   }
 
-  /* Bottom navigation should follow content naturally */
+  .tx-tab-content,
+  .tx-page-content {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .tx-stack {
+    gap: 8px;
+  }
+
+  /* Bottom navigation */
   .tx-bottom-nav {
     position: relative;
     bottom: auto;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 }
