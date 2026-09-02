@@ -10,7 +10,7 @@
     "desiredCity": "Delhi",
     "branchName": "b3",
     "branchCode": "",
-    "branchType": "Branch Office",
+    "branchType": "Metropolitan",
     "role": "f4",
     "grade": "",
     "department": "Operations",
@@ -24,6 +24,6 @@
     "consent": true,
     "organizationFinal": "Life Insurance Corporation of India",
     "createdAt": "2026-09-02T17:59:51.321Z",
-    "updatedAt": "2026-09-02T17:59:51.321Z"
+    "updatedAt": "2026-09-02T18:01:00.457Z"
   }
 ]
