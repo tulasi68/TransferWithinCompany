@@ -344,9 +344,14 @@ export default function App() {
     try {
       const listRes = await window.storage.list("request:", true);
       const keys = (listRes && listRes.keys) || [];
-      const others = [];
-    
+
+      
+     const others = [];
+
 for (const k of keys) {
+  // Do not match the employee against their own request.
+  if (k === key(email)) continue;
+
   try {
     const r = await window.storage.get(k, true);
     if (r && r.value) others.push(JSON.parse(r.value));
@@ -808,31 +813,137 @@ function MatchGroup({ title, subtitle, items, highlight }) {
 }
 
 function MatchCard({ m, highlight }) {
+  const organization = m.organizationFinal || m.organization || "—";
+  const withFamily =
+    m.withFamily === "yes"
+      ? `Yes${m.dependents ? ` (${m.dependents} dependents)` : ""}`
+      : "No";
+
   return (
     <div className={"tx-match " + (highlight ? "tx-match-highlight" : "")}>
-      <div className="tx-match-head">
-        <SwapBadge a={m.currentCity?.[0] || "?"} b={m.desiredCity?.[0] || "?"} size={42} />
-        <div>
-          <div className="tx-match-name">{m.name}</div>
-          <div className="tx-body-muted">{m.role}{m.grade ? ` · ${m.grade}` : ""} · {m.seniorityYears} yrs</div>
-          {m.department && <div className="tx-body-muted">{m.department}</div>}
-        </div>
+
+      {/* Transfer direction */}
+      <div className="tx-match-route">
+        {m.currentCity || "—"}
+        <ArrowLeftRight size={15} className="tx-inline-icon" />
+        {m.desiredCity || "—"}
       </div>
-      <div className="tx-match-route">{m.currentCity} <ArrowLeftRight size={13} className="tx-inline-icon" /> {m.desiredCity}</div>
+
+      {/* Organisation */}
+      <div className="tx-body-muted">
+        <strong>{organization}</strong>
+      </div>
+
+      {/* Employee details */}
       <dl className="tx-detail-grid">
-        <Detail label="Branch" value={`${m.branchName} (${m.branchCode || "—"})`} icon={Building2} />
-        <Detail label="Branch type" value={m.branchType} icon={MapPin} />
-        <Detail label="Intended date" value={m.transferDate} icon={Calendar} />
-        <Detail label="With family" value={m.withFamily === "yes" ? "Yes" : "No"} icon={Users} />
+        <Detail
+          label="Name"
+          value={m.name}
+          icon={User}
+        />
+
+        <Detail
+          label="Role / designation"
+          value={m.role}
+          icon={Briefcase}
+        />
+
+        <Detail
+          label="Grade / scale"
+          value={m.grade || "—"}
+          icon={Briefcase}
+        />
+
+        <Detail
+          label="Department"
+          value={m.department}
+          icon={Briefcase}
+        />
+
+        <Detail
+          label="Years of service"
+          value={m.seniorityYears}
+          icon={Calendar}
+        />
+
+        <Detail
+          label="Branch"
+          value={`${m.branchName || "—"} (${m.branchCode || "—"})`}
+          icon={Building2}
+        />
+
+        <Detail
+          label="Branch type"
+          value={m.branchType}
+          icon={MapPin}
+        />
+
+        <Detail
+          label="Official phone"
+          value={m.officialPhone}
+          icon={Phone}
+        />
+
+        <Detail
+          label="Alternate phone"
+          value={m.altPhone || "—"}
+          icon={Phone}
+        />
+
+        <Detail
+          label="With family"
+          value={withFamily}
+          icon={Users}
+        />
+
+        <Detail
+          label="Intended date"
+          value={m.transferDate}
+          icon={Calendar}
+        />
+
+        <Detail
+          label="Current manager"
+          value={m.managerName}
+          icon={User}
+        />
       </dl>
+
+      {/* Reason */}
       <div className="tx-field">
-        <span className="tx-field-label">Reason</span>
-        <p className="tx-body">{m.reason}</p>
+        <span className="tx-field-label">Reason for transfer</span>
+        <p className="tx-body">{m.reason || "—"}</p>
       </div>
+
+      {/* Additional notes, if present */}
+      {m.notes && (
+        <div className="tx-field">
+          <span className="tx-field-label">Additional notes</span>
+          <p className="tx-body">{m.notes}</p>
+        </div>
+      )}
+
+      {/* Contact */}
       <div className="tx-match-contact">
-        <a className="tx-btn tx-btn-secondary" href={`mailto:${m.email}`}><Mail size={14} /> {m.email}</a>
-        <a className="tx-btn tx-btn-secondary" href={`tel:${m.officialPhone}`}><Phone size={14} /> {m.officialPhone}</a>
+        {m.email && (
+          <a
+            className="tx-btn tx-btn-secondary"
+            href={`mailto:${m.email}`}
+          >
+            <Mail size={14} /> {m.email}
+          </a>
+        )}
+
+        {m.officialPhone && (
+          <a
+            className="tx-btn tx-btn-secondary"
+            href={`tel:${m.officialPhone}`}
+          >
+            <Phone size={14} /> {m.officialPhone}
+          </a>
+        )}
       </div>
+
     </div>
   );
 }
