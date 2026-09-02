@@ -7,7 +7,7 @@
     "officialPhone": "1234567890",
     "altPhone": "",
     "currentCity": "Delhi",
-    "desiredCity": "Kanpur",
+    "desiredCity": "Mumbai",
     "branchName": "b1",
     "branchCode": "",
     "branchType": "Metropolitan",
@@ -24,6 +24,6 @@
     "consent": true,
     "organizationFinal": "Life Insurance Corporation of India",
     "createdAt": "2026-09-02T17:55:30.251Z",
-    "updatedAt": "2026-09-02T17:55:30.251Z"
+    "updatedAt": "2026-09-02T20:24:25.427Z"
   }
 ]
