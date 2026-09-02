@@ -1,0 +1,29 @@
+[
+  {
+    "name": "a1",
+    "email": "tulasianand@yahoo.com",
+    "organization": "Life Insurance Corporation of India",
+    "organizationOther": "",
+    "officialPhone": "1234567890",
+    "altPhone": "",
+    "currentCity": "Hyderabad",
+    "desiredCity": "Ahmedabad",
+    "branchName": "b1",
+    "branchCode": "",
+    "branchType": "Semi-Urban",
+    "role": "am1",
+    "grade": "",
+    "department": "Operations",
+    "seniorityYears": "3",
+    "withFamily": "no",
+    "dependents": "",
+    "transferDate": "2026-09-02",
+    "managerName": "cm1",
+    "reason": "abc",
+    "notes": "",
+    "consent": true,
+    "organizationFinal": "Life Insurance Corporation of India",
+    "createdAt": "2026-09-02T17:43:25.952Z",
+    "updatedAt": "2026-09-02T17:43:25.952Z"
+  }
+]
